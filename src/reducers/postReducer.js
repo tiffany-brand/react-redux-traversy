@@ -5,7 +5,7 @@ const initialState = {
 	item: {}
 };
 
-export default function(state = initialState, action) {
+export default function postReducer(state = initialState, action) {
 	switch (action.type) {
 		case FETCH_POSTS:
 			return {
@@ -15,6 +15,7 @@ export default function(state = initialState, action) {
 		case NEW_POST:
 			return {
 				...state,
+				items: [ action.payload, ...state.items ],
 				item: action.payload
 			};
 		default:
